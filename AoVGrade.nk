@@ -1,0 +1,170 @@
+
+set cut_paste_input [stack 0] 
+
+version 11.3 v5
+
+push $cut_paste_input
+
+Group {
+
+ name AOV_GRADE1
+
+ tile_color 0x1c95abff
+
+ label "Adjusting \[value in]"
+
+ selected true
+
+ xpos -3416
+
+ ypos 1603
+
+ addUserKnob {20 User}
+
+ addUserKnob {41 in l "Selected AOV" t "Selected AOV to grade" T Shuffle7.in}
+
+ addUserKnob {26 ""}
+
+ addUserKnob {41 blackpoint T Grade11.blackpoint}
+
+ addUserKnob {41 whitepoint T Grade11.whitepoint}
+
+ addUserKnob {41 black l lift T Grade11.black}
+
+ addUserKnob {41 white l gain T Grade11.white}
+
+ addUserKnob {41 multiply T Grade11.multiply}
+
+ addUserKnob {41 gamma T Grade11.gamma}
+
+}
+
+ Input {
+
+ inputs 0
+
+ name GRADE_MASK
+
+ xpos -486
+
+ ypos 278
+
+ number 1
+
+ }
+
+ Input {
+
+ inputs 0
+
+ name CG_AOV_INPUT
+
+ xpos -760
+
+ ypos 146
+
+ }
+
+ Dot {
+
+ name Dot30
+
+ xpos -726
+
+ ypos 186
+
+ }
+
+set N6fce5c00 [stack 0]
+
+ Dot {
+
+ name Dot31
+
+ xpos -616
+
+ ypos 186
+
+ }
+
+ Shuffle {
+
+ name Shuffle7
+
+ label "shuffle out \[value in]"
+
+ xpos -650
+
+ ypos 228
+
+ }
+
+set N6fce5400 [stack 0]
+
+ Grade {
+
+ inputs 1+1
+
+ white {1 1 1 1}
+
+ name Grade11
+
+ xpos -650
+
+ ypos 278
+
+ }
+
+ Dot {
+
+ name Dot1
+
+ xpos -616
+
+ ypos 324
+
+ }
+
+push $N6fce5400
+
+push $N6fce5c00
+
+ Merge2 {
+
+ inputs 2
+
+ operation from
+
+ name Merge16
+
+ xpos -760
+
+ ypos 234
+
+ }
+
+ Merge2 {
+
+ inputs 2
+
+ operation plus
+
+ name Merge17
+
+ xpos -760
+
+ ypos 320
+
+ }
+
+ Output {
+
+ name Output1
+
+ xpos -760
+
+ ypos 388
+
+ }
+
+end_group

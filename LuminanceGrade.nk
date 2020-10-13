@@ -1,0 +1,54 @@
+set cut_paste_input [stack 0]
+version 11.3 v5
+push $cut_paste_input
+Group {
+ name luminance_Grade1
+ selected true
+ xpos -3004
+ ypos 8031
+ addUserKnob {20 User}
+ addUserKnob {41 LuminanceGrade l Luminance T Grade13.gamma}
+ addUserKnob {41 multiply T Grade13.multiply}
+ addUserKnob {26 ""}
+ addUserKnob {26 About l "" +STARTLINE T "luminance Grade gizmo created by Taylor Hasting. taylorhasting.com"}
+}
+ Input {
+  inputs 0
+  name Mask
+  xpos -576
+  ypos 201
+  number 1
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -760
+  ypos 142
+ }
+ Colorspace {
+  colorspace_out HSV
+  name Colorspace1
+  xpos -760
+  ypos 182
+ }
+ Grade {
+  inputs 1+1
+  channels {-rgba.red -rgba.green rgba.blue none}
+  multiply 0.8
+  gamma 1.1
+  name Grade13
+  xpos -760
+  ypos 208
+ }
+ Colorspace {
+  colorspace_in HSV
+  name Colorspace2
+  xpos -760
+  ypos 246
+ }
+ Output {
+  name Output1
+  xpos -760
+  ypos 346
+ }
+end_group
